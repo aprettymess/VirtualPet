@@ -71,4 +71,8 @@ public class KuroInitializer : MonoBehaviour
         isInitialized = true;
         Debug.Log("Kuro initialization complete - physics activated");
     }
+    public bool IsInitialized()
+    {
+        return isInitialized;
+    }
 }
