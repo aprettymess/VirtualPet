@@ -4041,8 +4041,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ballPrefab: {fileID: 6558295675096139861, guid: 1d14c48b13b071544babdbceb95a8fd4, type: 3}
-  throwForce: 8
-  spawnDistance: 0.5
+  throwForce: 0.5
+  minDistanceFromEdge: 0.2
+  surfaceOffset: 0.1
   throwKey: 32
 --- !u!4 &448546762
 Transform:

@@ -1,14 +1,13 @@
-// Create FetchBall.cs script:
 using UnityEngine;
 
 public class FetchBall : MonoBehaviour
 {
     [Header("Physics")]
-    [SerializeField] private float throwForce = 5f;
     [SerializeField] private float despawnTime = 30f;
+    [SerializeField] private LayerMask groundLayers = -1;
     
     private Rigidbody ballRigidbody;
-    private bool hasBeenThrown = false;
+    private bool hasLanded = false;
     
     void Start()
     {
@@ -16,27 +15,34 @@ public class FetchBall : MonoBehaviour
         
         // Auto-despawn after time
         Destroy(gameObject, despawnTime);
-    }
-    
-    public void ThrowBall(Vector3 direction, float force)
-    {
-        if (!hasBeenThrown)
-        {
-            ballRigidbody.AddForce(direction * force, ForceMode.Impulse);
-            hasBeenThrown = true;
-            
-            // Notify Kuro about thrown object
-            FindObjectOfType<KuroController>()?.OnObjectThrown(gameObject);
-        }
+        
+        // Ensure proper physics settings for MR
+        ballRigidbody.mass = 0.1f;
+        ballRigidbody.drag = 1f;
+        ballRigidbody.angularDrag = 1f;
     }
     
     void OnCollisionEnter(Collision collision)
     {
-        // Make ball less bouncy after first bounce
-        if (hasBeenThrown && ballRigidbody.drag < 2f)
+        if (!hasLanded)
         {
-            ballRigidbody.drag = 2f;
-            ballRigidbody.angularDrag = 2f;
+            hasLanded = true;
+            
+            // Reduce bouncing after first contact
+            ballRigidbody.drag = 3f;
+            ballRigidbody.angularDrag = 3f;
+            
+            Debug.Log("Ball landed and is ready for fetch!");
+        }
+    }
+    
+    void Update()
+    {
+        // Safety: If ball falls too low, reset to reasonable height
+        if (transform.position.y < -2f)
+        {
+            transform.position = new Vector3(transform.position.x, 0.5f, transform.position.z);
+            ballRigidbody.velocity = Vector3.zero;
         }
     }
 }
