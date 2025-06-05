@@ -21066,6 +21066,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FetchBall
       objectReference: {fileID: 0}
+    - target: {fileID: 6558295675096139861, guid: 1d14c48b13b071544babdbceb95a8fd4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

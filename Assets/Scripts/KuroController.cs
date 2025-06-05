@@ -204,4 +204,19 @@ public class KuroController : MonoBehaviour
             currentState = KuroState.Idle;
         }
     }
+    
+    void DebugAnimations()
+    {
+        if (animator)
+        {
+            Debug.Log($"Animator enabled: {animator.enabled}");
+            Debug.Log($"Current state: {currentState}");
+            Debug.Log($"Is moving: {isMoving}");
+            Debug.Log($"Speed parameter: {animator.GetFloat("Speed")}");
+        
+            // Log current animation state
+            AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+            Debug.Log($"Current animation: {stateInfo.shortNameHash}");
+        }
+    }
 }

@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 4361079290106951317}
   - component: {fileID: 3676721351344656098}
   - component: {fileID: 7222866157992005042}
+  - component: {fileID: 779385312407460843}
   m_Layer: 8
   m_Name: DogEntity
   m_TagString: Kuro
@@ -257,6 +258,30 @@ MonoBehaviour:
   animator: {fileID: 5279681707745518930}
   rb: {fileID: 5378794077428327730}
   ballHoldPoint: {fileID: 7895157106939818610}
+--- !u!114 &779385312407460843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8995975985437476212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df427ea67d12acf4fb53b9106f8d736d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detectionRadius: 0.4
+  pettingRadius: 0.25
+  handLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  pettingCooldown: 0.75
+  handNearDuration: 0.5
+  animator: {fileID: 5279681707745518930}
+  audioSource: {fileID: 3676721351344656098}
+  happySound: {fileID: 8300000, guid: 152b11bb62f51894495d3ddc90d0ae0b, type: 3}
+  curiousSound: {fileID: 8300000, guid: 73157beb5e691ed4fbc61fc582a37a02, type: 3}
+  showDebugSpheres: 1
 --- !u!1001 &8712548192418588113
 PrefabInstance:
   m_ObjectHideFlags: 0
